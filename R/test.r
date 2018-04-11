@@ -71,7 +71,7 @@ test <- function(pkg = ".", filter = NULL, ...) {
     )
   }
 
-  withr::with_envvar(r_env_vars(),
+  withr::with_envvar(c(r_env_vars(), TESTTHAT_PKG = pkg$package),
     do.call(testthat::test_dir, testthat_args))
 }
 
